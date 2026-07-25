@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        DOCKERHUB_USERNAME = "tech365"
+        DOCKERHUB_USERNAME = "agho23"
         IMAGE_NAME = "${DOCKERHUB_USERNAME}/nodejs-cicd-app"
         APP_SERVER = APP_SERVER = "3.94.80.117/"
         APP_PORT = "3000"
