@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("welcome to tech365, Agho Collins, a student of tech365, learning DevOps and CI/CD with Jenkins, Docker, and Kubernetes. It is really interesting and fun to learn DevOps with tech365.");
+  res.send("welcome to tech365, Agho is here.");
 });
 
 app.get("/health", (req, res) => {
