@@ -3,10 +3,8 @@ pipeline{
     environment{
         DOCKERHUB_USERNAME = "tech365"
         IMAGE_NAME = "${DOCKERHUB_USERNAME}/nodejs-cicd-app"
-        APP_SERVER = APP_SERVER = "3.94.80.117/"
+        APP_SERVER = "3.94.80.117/"
         APP_PORT = "3000"
-        APP_USER = "ec2-user"
-        CONTAINER_NAME = "nodejs-app"
     }
 
     stages{
@@ -22,11 +20,11 @@ pipeline{
             }
         }
 
-        // stage("Run tests"){
-        //     steps{
-        //         sh "npm test  --if-present"
-        //     }
-        // }
+        stage("Run tests"){
+            steps{
+                sh "npm test"
+            }
+        }
         
         stage("Build docker image"){
             steps{
@@ -65,7 +63,7 @@ pipeline{
                     docker stop nodejs-app || true &&
                     docker rm nodejs-app || true &&
 
-                    docker run -d --name nodejs-app --restart unless-stopped -p ${APP_PORT}:3000 ${IMAGE_NAME}:latest
+                    docker run -d --name nodejs-app --restart unless stopped -p ${APP_PORT}:3000 ${IMAGE_NAME}:latest
                     '''
                 }
             }
